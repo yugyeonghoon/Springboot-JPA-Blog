@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create	#create 는 테이블을 새로 만듬 또 하면 테이블 새로만들어짐 /기존 테이블 drop 후 생성 , 최초에만 create 그다음  update
+      ddl-auto: update	#create 는 테이블을 새로 만듬 또 하면 테이블 새로만들어짐 /기존 테이블 drop 후 생성 , 최초에만 create 그다음  update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         #PhysicalNamingStrategyStandardImpl = Entity를 만들때 변수명 그대로 테이블 필드명에 넣어줌/ SpringPhysicalNamingStrategyStandardImpl = 카멜표시법으로 바꿔줌(ex my_email)
