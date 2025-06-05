@@ -31,7 +31,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	// 프로젝트에서 연결된 데이터베이스의 넘버링 전략을 따라간다. = 오토인크리먼트
 	private int id;	//orcle = 시퀀스, mysql = auto_increment
 	
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, length = 20, unique = true)
 	private String username; // 아이디
 	
 	@Column(nullable = false, length = 50)	//123456 -> 해쉬 (비밀번호 암호화) 때문에 length를 좀 길게 설정
