@@ -34,7 +34,7 @@ public class User {
 	@Column(nullable = false, length = 20, unique = true)
 	private String username; // 아이디
 	
-	@Column(nullable = false, length = 50)	//123456 -> 해쉬 (비밀번호 암호화) 때문에 length를 좀 길게 설정
+	@Column(nullable = false, length = 100)	//123456 -> 해쉬 (비밀번호 암호화) 때문에 length를 좀 길게 설정
 	private String password; // 비밀번호
 	
 	@Column(nullable = false, length = 50)
