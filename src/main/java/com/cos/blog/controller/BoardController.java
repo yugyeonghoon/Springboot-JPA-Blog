@@ -1,21 +1,31 @@
 package com.cos.blog.controller;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.cos.blog.config.auth.PrincipalDetail;
+import com.cos.blog.service.BoardService;
 
 @Controller
 public class BoardController {
 
+	@Autowired
+	private BoardService boardService;
+	
+	
+	//컨트롤러에서 세션을 어떻게 찾는지 ?
 	// @AuthenticationPrincipal PrincipalDetail principal  <이걸 index() 파라미터에 집어 넣으면 세션 확인 가능 아니면 위에 방법으로
 	
 	@GetMapping({"", "/"})
-	public String index(@AuthenticationPrincipal PrincipalDetail principal) {	//컨트롤러에서 세션을 어떻게 찾는지 ?
-		//application.yml 에서 mvc 설정을 prefix, subfix 설정으로 인해
-		// /WEB-INF/views/index.jsp 를 찾아감
-		System.out.println("로그인한 사용자 아이디 :" + principal.getUsername());
-		return "index";
+	public String index(Model model) {	
+		model.addAttribute("boards",boardService.글목록());
+		return "index";	//viewResolver 작동
+	}
+	
+	//USER 권한 필요
+	@GetMapping("board/saveForm")
+	public String saveForm() {
+		return "board/saveForm";
 	}
 }

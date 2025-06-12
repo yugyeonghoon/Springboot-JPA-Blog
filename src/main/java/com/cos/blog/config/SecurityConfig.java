@@ -54,7 +54,9 @@ public class SecurityConfig {
             )
             .formLogin(form -> form
                 .loginPage("/auth/loginForm")
-                .loginProcessingUrl("/auth/loginProc")	//스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인 해줌.
+                .permitAll()
+                .loginProcessingUrl("/auth/loginProc")
+                .permitAll()//스프링 시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인 해줌.
                 .defaultSuccessUrl("/", true)
                 .permitAll()
             );
@@ -62,3 +64,4 @@ public class SecurityConfig {
         return http.build();
     }
 }
+
