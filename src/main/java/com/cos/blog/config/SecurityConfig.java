@@ -19,7 +19,7 @@ import jakarta.servlet.DispatcherType;
 @EnableWebSecurity	// 시큐리티 필터가 등록이 된다. = 스프링 시큐리티가 활성화가 되어 있는데 어떤 설정을 해당 파일에서 하겠다.(controller 가기전 먼저 필터링)
 @EnableMethodSecurity(prePostEnabled = true) // 특정 주소로 접근을 하면 권환 및 인증을 미리 체크하겠다는 뜻
 public class SecurityConfig {
-
+	
 	@Bean	///IoC로 설정 = 스프링이 관리
 	public BCryptPasswordEncoder encodPWD() {
 		//String encPassword = new BCryptPasswordEncoder().encode("1234");
