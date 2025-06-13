@@ -22,13 +22,13 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update	#create 는 테이블을 새로 만듬 또 하면 테이블 새로만들어짐 /기존 테이블 drop 후 생성 , 최초에만 create 그다음  update
+      ddl-auto: update  #create 는 테이블을 새로 만듬 또 하면 테이블 새로만들어짐 /기존 테이블 drop 후 생성 , 최초에만 create 그다음  update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         #PhysicalNamingStrategyStandardImpl = Entity를 만들때 변수명 그대로 테이블 필드명에 넣어줌/ SpringPhysicalNamingStrategyStandardImpl = 카멜표시법으로 바꿔줌(ex my_email)
-    show-sql: true	#true 하면 콘솔창에 데이터베이스 생성 쿼리 출력
+    #show-sql: true #true 하면 콘솔창에 데이터베이스 생성 쿼리 출력
     properties:
-      "[hibernate.format_sql]": true	#원래는 한줄로 쿼리 보여주는데 hibernate 하면 가독성 높게 보여줌
+      "[hibernate.format_sql]": true  #원래는 한줄로 쿼리 보여주는데 hibernate 하면 가독성 높게 보여줌
 
   jackson:
     serialization:
