@@ -49,7 +49,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) // 개발 중에는 CSRF 비활성화 (선택 사항)
             .authorizeHttpRequests(auth -> auth.dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                .requestMatchers("/","/auth/**", "/js/**", "/css/**", "/images/**").permitAll()
+                .requestMatchers("/","/auth/**", "/js/**", "/css/**", "/image/**").permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

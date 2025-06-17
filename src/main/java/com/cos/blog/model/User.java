@@ -30,7 +30,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	// 프로젝트에서 연결된 데이터베이스의 넘버링 전략을 따라간다. = 오토인크리먼트
 	private int id;	//orcle = 시퀀스, mysql = auto_increment
 	
-	@Column(nullable = false, length = 20, unique = true)
+	@Column(nullable = false, length = 50, unique = true)
 	private String username; // 아이디
 	
 	@Column(nullable = false, length = 100)	//123456 -> 해쉬 (비밀번호 암호화) 때문에 length를 좀 길게 설정
@@ -43,6 +43,8 @@ public class User {
 	//DB는 RoleType이라는게 없다.
 	@Enumerated(EnumType.STRING)
 	private RoleType role;	//Enum을 쓰는게 좋다. -  Enum을 쓰면 도메인(범위 ex성별 남, 여)을 만들어줌 // ADMIN, USER (권한부여)
+	
+	private String oauth; // kakao, google
 	
 	@CreationTimestamp //시간이 자동입력
 	private Timestamp createDate;	//생성일
