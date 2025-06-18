@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -48,7 +49,8 @@ public class Board {
 	@JoinColumn(name="userId")	//필드명은 userId User 객체니까 user.java의 user 참조
 	private User user;	//DB는 오브젝트를 저장할 수 없다. ForeignKey, 자바는 오브젝트를 저장할 수 있다.
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)	//mappedBy 연관관계의 주인이 아니다(난 FK가 아니다.) DB에 컬럼을 만들지 마세요. 필드값을 mappedBy에 넣어준다.
+																							//cascade = 설정을 해야 게시글 삭제 할때 댓글도 같이 삭제
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)	//mappedBy 연관관계의 주인이 아니다(난 FK가 아니다.) DB에 컬럼을 만들지 마세요. 필드값을 mappedBy에 넣어준다.
 	@JsonIgnoreProperties({"board"})
 	@OrderBy("id desc")
 	private List<Reply> replys;

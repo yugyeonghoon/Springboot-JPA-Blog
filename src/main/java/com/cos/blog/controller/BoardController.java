@@ -29,7 +29,7 @@ public class BoardController {
 	
 	@GetMapping("/board/{id}")
 	public String findById(@PathVariable int id, Model model) {
-		model.addAttribute(boardService.글상세보기(id));
+		model.addAttribute("board",boardService.글상세보기(id));
 		return "board/detail";
 	}
 	

@@ -79,31 +79,45 @@ let index = {
 			console.log("실패하였습니다.")
 		});
 	},
-	
+
 	replySave: function() {
 		let data = {
+			userId: $("#userId").val(),
+			boardId: $("#boardId").val(),
 			content: $("#reply-content").val()
 		};
-		
-		let boardId = $("#boardId").val();
-		
-		console.log(data);
-		
+
 		$.ajax({
 			type: "POST",
-			url: `/api/board/${boardId}/reply`,
+			url: `/api/board/${data.boardId}/reply`,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"
 		}).done(function(resp) {
 			alert("댓글작성이 완료되었습니다");
-			location.href = `/board/${boardId}`;
+			location.href = `/board/${data.boardId}`;
 			console.log(resp)
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 			console.log("실패하였습니다.")
 		});
+	},
+
+	replyDelete: function(boardId, replyId) {
+		$.ajax({
+			type: "DELETE",
+			url: `/api/board/${boardId}/reply/${replyId}`,
+			dataType: "json"
+			
+		}).done(function(resp) {
+			alert("댓글을 삭제하였습니다.");
+			location.href = `/board/${boardId}`;
+			
+		}).fail(function(error) {
+			alert(JSON.stringify(error));
+		});
 	}
+
 
 }
 
